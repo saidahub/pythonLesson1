@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="0.284" timestamp="2021-02-07T13:18:35.175403" hostname="SHIDAN-PC"><testcase classname="test_calculator.TestCalc" name="test_add" time="0.001" /><testcase classname="test_calculator.TestCalc" name="test_dir" time="0.001" /><testcase classname="test_demo" name="test_answer" time="0.002"><failure message="assert 4 == 5&#10; +  where 4 = inc(3)">def test_answer():
+&gt;       assert inc(3) == 5
+E       assert 4 == 5
+E        +  where 4 = inc(3)
+
+test_demo.py:6: AssertionError</failure></testcase></testsuite></testsuites>
