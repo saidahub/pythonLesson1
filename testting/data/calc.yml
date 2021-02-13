@@ -7,7 +7,7 @@ add:
       - [ -1,-2,-3 ]
       - [ -1,0,-1 ]
       - [ -1,1,0 ]
-    ids: [ 'int','bignum','addzero','negative1','negative2','negint' ]
+    ids: [ '整数','bignum','addzero','负数1','negative2','negint' ]
   float:
     datas:
       - [ 0.1,0.1,0.2 ]

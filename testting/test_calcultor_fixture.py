@@ -9,20 +9,20 @@ from pythoncode.calculator import Calculator
 
 
 def get_datas(name, type='int'):
-    with open("./data/calc.yml") as f:
+    with open("./data/calc.yml", encoding='utf-8') as f:
         all_datas = yaml.safe_load(f)
         datas = all_datas[name][type]['datas']
         ids = all_datas[name][type]['ids']
         return (datas, ids)
 
 
-# 添加一个fixture 相当于setup teardown
-@pytest.fixture(scope="module")
-def get_instance():
-    print("开始计算")
-    calc: list = Calculator()
-    yield calc
-    print("结束计算")
+# # 添加一个fixture 相当于setup teardown
+# @pytest.fixture(scope="module")
+# def get_instance():
+#     print("开始计算")
+#     calc: list = Calculator()
+#     yield calc
+#     print("结束计算")
 
 
 # fixture中的params和ids 当数据有多组时需要分开写，不能写在一个里面

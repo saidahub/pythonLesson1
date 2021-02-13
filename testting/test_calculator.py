@@ -9,7 +9,7 @@ from pythoncode.calculator import Calculator
 
 
 def get_datas(name, type='int'):
-    with open("./data/calc.yml") as f:
+    with open("./data/calc.yml",encoding='utf-8') as f:
         all_datas = yaml.safe_load(f)
         datas = all_datas[name][type]['datas']
         ids = all_datas[name][type]['ids']
