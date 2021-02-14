@@ -10,8 +10,13 @@ import datetime
 from typing import List
 
 import pytest
+import sys
+sys.path.append('..')
+print(sys.path)
 
 from pythoncode.calculator import Calculator
+
+
 
 
 @pytest.fixture()

@@ -1,11 +1,8 @@
-import sys
-import pytest
-import yaml
-#
-# sys.path.append('..')
-# print(sys.path)
 
 from pythoncode.calculator import Calculator
+import allure
+import pytest
+import yaml
 
 
 def get_datas(name, type='int'):
@@ -26,7 +23,6 @@ def get_datas(name, type='int'):
 
 
 # fixture中的params和ids 当数据有多组时需要分开写，不能写在一个里面
-# @pytest.fixture(params=[get_datas('add', 'int')[0], get_datas('add', 'float')[0]],ids=[get_datas('add', 'int')[1], get_datas('add', 'float')[1]])
 @pytest.fixture(params=get_datas('add', 'int')[0], ids=get_datas('add', 'int')[1])
 def get_calc_with_fixture_int(request):
     return request.param
@@ -53,6 +49,7 @@ def get_calc_with_fixture_div_abnormal(request):
 
 
 # 测试类
+@allure.feature("计算器")
 class TestCalc:
     # 定义类变量
     # datas: list= get_datas()
@@ -70,6 +67,7 @@ class TestCalc:
 
     # 整数相加
     #    @pytest.mark.parametrize("a, b, result", add_int_data[0], ids=add_int_data[1])
+    @allure.story("整数相加功能")
     @pytest.mark.add
     def test_add_int(self, get_instance, get_calc_with_fixture_int):
         i = get_calc_with_fixture_int
@@ -78,6 +76,7 @@ class TestCalc:
 
     # 浮点数相加
     #    @pytest.mark.parametrize("a, b, result", add_float_data[0], ids=add_float_data[1])
+    @allure.story("浮点数数相加功能")
     def test_add_float(self, get_instance, get_calc_with_fixture_float):
         f = get_calc_with_fixture_float
         print(f)
@@ -85,7 +84,9 @@ class TestCalc:
         assert f[2] == round(get_instance.add(f[0], f[1]), 2)
 
     # todo: 相除功能
-    #    @pytest.mark.parametrize("a, b, result", div_int_data[0], ids=div_int_data[1])
+    #    @pytest.mark.parametrize("a, b, result", div_int_data[0], ids=div_int_data[1])#
+    #    @allure.title("相加_{get_calc_with_fixture_div_int[0]}_{get_calc_with_fixture_div_int[1]}")
+    @allure.story("整数相除功能")
     @pytest.mark.div
     def test_div_int(self, get_instance, get_calc_with_fixture_div_int):
         div_int = get_calc_with_fixture_div_int
@@ -94,6 +95,7 @@ class TestCalc:
 
     # 浮点数测试用例设计
     #    @pytest.mark.parametrize("a, b, result", div_float_data[0], ids=div_float_data[1])
+    @allure.story("浮点数相除功能")
     def test_div_float(self, get_instance, get_calc_with_fixture_div_float):
         div_float = get_calc_with_fixture_div_float
         print(div_float)
@@ -101,6 +103,7 @@ class TestCalc:
 
     # 异常情况测试用例设计
 #    @pytest.mark.parametrize("a, b, result", div_abnormal_data[0], ids=div_abnormal_data[1])
+    @allure.story("异常情况相除")
     def test_div_abnormal(self, get_instance, get_calc_with_fixture_div_abnormal):
         with pytest.raises(ZeroDivisionError):
             div_abnormal = get_calc_with_fixture_div_abnormal

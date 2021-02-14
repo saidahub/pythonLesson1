@@ -1,9 +1,9 @@
 import sys
 import pytest
 import yaml
-#
-# sys.path.append('..')
-# print(sys.path)
+
+sys.path.append('..')
+print(sys.path)
 
 from pythoncode.calculator import Calculator
 
